@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Page Replacement Visualizer — FIFO / LRU / Optimal (Vertical Frames)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="card vertical">
+    <header>
+      <div class="header-content">
+        <h1>PAGE REPLACEMENT VISUALIZER</h1>
+        <p>FIFO · LRU · Optimal — Vertical Frames, Hits & Misses</p>
+      </div>
+      <div class="theme-toggle-wrapper">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-text">Dark Mode</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="controls-vertical">
+      <div class="row">
+        <label>Algorithm
+          <select id="algo">
+            <option value="fifo">FIFO</option>
+            <option value="lru">LRU</option>
+            <option value="opt">Optimal</option>
+          </select>
+        </label>
+
+        <label>Frames
+          <input id="frames" type="number" min="1" max="10" value="3" />
+        </label>
+      </div>
+
+      <div class="row">
+        <label>Reference String
+          <input id="refStr" placeholder="e.g. 7 0 1 2 0 3 0 4" />
+        </label>
+      </div>
+
+      <div class="row samples">
+        <button id="sampleA">Load Sample A</button>
+        <button id="sampleB">Load Sample B</button>
+        <label class="speedLabel">Speed
+          <input id="speed" type="range" min="0.3" max="2.5" step="0.1" value="1" />
+        </label>
+      </div>
+
+      <div class="row buttons-vertical">
+        <button id="play" class="btn-primary">
+          <span class="btn-icon">▶</span>
+          <span>Play</span>
+        </button>
+        <button id="pause" class="btn-secondary">
+          <span class="btn-icon">❚❚</span>
+          <span>Pause</span>
+        </button>
+        <button id="step" class="btn-secondary">
+          <span class="btn-icon">➡</span>
+          <span>Step</span>
+        </button>
+        <button id="reset" class="btn-secondary">
+          <span class="btn-icon">🔁</span>
+          <span>Reset</span>
+        </button>
+        <button id="export" class="btn-export">
+          <span class="btn-icon">📷</span>
+          <span>Export PNG</span>
+        </button>
+      </div>
+
+      <div class="panel stats">
+        <div><strong>Current Ref:</strong> <span id="curRef">-</span></div>
+        <div><strong>Hits:</strong> <span id="hitCount">0</span></div>
+        <div><strong>Misses:</strong> <span id="faultCount">0</span></div>
+        <div><strong>Total:</strong> <span id="totalCount">0</span></div>
+      </div>
+
+      <div class="panel legend-panel">
+        <h4>Legend</h4>
+        <div><span class="dot hit"></span> Hit</div>
+        <div><span class="dot fault"></span> Miss / Fault</div>
+        <div><span class="dot empty"></span> Empty frame</div>
+      </div>
+    </section>
+
+    <section class="canvasWrap">
+      <canvas id="can" width="1000" height="480"></canvas>
+    </section>
+
+    <div id="narration">Narration: Ready — enter a reference string or load a sample.</div>
+
+    <footer>Page Replacement Visualizer — Vertical Frames</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
